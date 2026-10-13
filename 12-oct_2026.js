@@ -49,9 +49,9 @@ const ab = {
   user: { name: "Akila" }
 };
 
-const spe = { ...ab };
+const spe1 = { ...ab };
 
-spe.user.name = "Priya";
+spe1.user.name = "Priya";
 
 console.log(ab.user.name); // "Priya"
 
@@ -190,3 +190,18 @@ function findLargest(arr) {
 
 console.log(findLargest([12, 5, 30, 8, 21]));
 // Expected: 30
+
+//remove duplicate values in an array
+
+function duplicate(a){
+    let withoutdup=[];
+    // for(let i=0;i<a.length;i++){
+    //     if(withoutdup.includes(a[i]))continue;
+    //     withoutdup.push(a[i])
+    // }
+    // return withoutdup;
+
+    return new Set([...a])
+}
+console.log(duplicate([4,5,6,7,6,4]))
+
