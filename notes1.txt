@@ -1,0 +1,39 @@
+[12:32 pm, 17/10/2026] 😅: 5. When should you use each?
+
+Choose Context API
+For a theme switcher, language preference, or relatively simple shared state that several components need.
+
+
+
+Choose Redux Toolkit
+For a large e-commerce application with shared cart state, complex updates, and multiple components that need predictable state transitions and debugging tools.
+
+
+
+You do not need Redux for every React project. Also, server-state tools such as TanStack Query are often better suited to fetching and caching API data than storing all server data in Redux or Context.
+[12:34 pm, 17/10/2026] 😅: I would choose Context API for a dark/light theme toggle because it is simple shared state. Context is built into React and lets multiple components access the theme without prop drilling. Redux Toolkit is more useful when an application needs more complex shared state management, structured updates, and debugging tools."
+
+One important point: Context API is not always better than Redux. The right choice depends on the complexity and update patterns of your application.
+[12:36 pm, 17/10/2026] 😅: If an interviewer asks, "Does Next.js replace Redux or Context API?", answer:
+"No. Next.js provides routing, Server Components, and server-side rendering capabilities, while Context API and Redux Toolkit manage shared React state. They solve different problems and can be used together."
+[12:36 pm, 17/10/2026] 😅: . What if we use Redux Toolkit in Next.js?
+We can use Redux Toolkit when we need more structured, complex shared state.
+The usual setup is:
+1. Install @reduxjs/toolkit and react-redux.
+2. Create a Redux store and slices.
+3. Create a Client Component containing the Redux Provider.
+4. Wrap the relevant part of the app with that provider.
+5. Use useSelector() to read state and useDispatch() to dispatch actions.
+Next.js-specific point: For App Router applications, configure the store through a provider and avoid sharing one mutable Redux store globally across server requests. Server Components should generally fetch server data directly rather than access the Redux store.
+[12:37 pm, 17/10/2026] 😅: 2. What is Context API?
+Context API is a built-in React feature that allows components to access shared values without manually passing props through every level.
+[12:37 pm, 17/10/2026] 😅: Here, Navbar can access the theme directly, even though App is the component providing it.
+Common use cases:
+- Theme (dark/light mode)
+- Language preferences
+- Authenticated user information
+- Simple shared state
+3. What is Redux?
+Redux is a state management library that helps manage shared application state in a predictable, centralized way. For React applications, Redux Toolkit is the recommended approach for writing Redux logic.
+For example, an e-commerce application might need to manage cart items across the product page, navbar, and checkout page.
+[12:37 pm, 17/10/2026] 😅: This creates a slice of state and an action to update it. To use it in React, you also configure a Redux store and connect components using Provider, useSelector, and useDispatch.

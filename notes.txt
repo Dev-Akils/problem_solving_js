@@ -1,0 +1,144 @@
+A transpiler converts code from one form or version into another, such as JSX into JavaScript. 
+A bundler combines modules and manages their dependencies to produce optimized output files for an application.
+ Babel is a transpiler, while Webpack is a bundler.
+
+ -------------------------------------
+
+ Feature	JavaScript	TypeScript
+Type checking	Primarily at runtime	Static checking before execution
+Parameter types	Not declared in standard syntax	Can be declared
+Return types	Not declared in standard syntax	Can be declared
+Interfaces	No TypeScript-style interfaces	Supported
+Union types	No built-in static union syntax	Supported
+Generics	No TypeScript-style generics	Supported
+Browser execution	Runs directly	Usually compiled/transformed to JavaScript first
+Runtime performance	Depends on the JavaScript code	Type annotations alone don't make runtime code faster
+
+-----------------------------------------------
+
+
+Cluster mode in Node.js allows us to create multiple worker processes that can handle incoming requests concurrently. It helps utilize multiple CPU cores and improve the application's ability to handle a higher volume of requests.
+
+
+
+
+2. Understand one important point
+- Concurrency: Multiple requests can make progress without having to wait for each other unnecessarily.
+- Parallelism: Multiple workers can execute on different CPU cores at the same time.
+Cluster mode helps with both request-handling capacity and parallelism. However, actual performance
+ depends on your workload and system resources.
+
+ -------------------------------------------
+
+ Cluster: Multiple Node.js processes can handle incoming connections, distributing the workload across workers.
+
+
+
+Worker Threads: If one request requires a heavy calculation, such as processing a huge dataset, a worker thread 
+can perform that calculation without blocking the main JavaScript thread.
+
+---------------------------
+
+1. Node.js — The worker
+Node.js runs your backend JavaScript code. It can receive requests, execute logic, and communicate with databases.
+
+2. CPU-intensive task — Difficult cooking
+Imagine calculating a huge report. It takes a lot of processing time. If the main JavaScript thread does this
+ synchronously, it can temporarily block other work.
+
+3. Worker Threads — Additional chefs
+A separate thread can han  dle the heavy calculation, allowing the main thread to continue responding to other work.
+
+----------------------------------------------------------
+
+A memory leak in React occurs when resources or references are retained unnecessarily after a 
+component is no longer needed. Common causes include uncleared timers, event listeners, subscriptions, 
+and unnecessary ongoing asynchronous operations. We can prevent these issues by using the cleanup function 
+returned from useEffect to clear timers, remove listeners, cancel requests where possible, and unsubscribe from 
+external resources.                                                                                              
+   4. How do we prevent memory leaks?
+- Clear timers using clearInterval() or clearTimeout().
+- Remove event listeners using removeEventListener().
+- Cancel supported API requests using AbortController.
+- Unsubscribe from subscriptions and disconnect observers when they are no longer needed.
+- Avoid retaining unnecessary references to large objects.
+
+----------------------------------------------------------
+
+1. What is data consistency?
+Data consistency means keeping data correct, accurate, and synchronized across the database.
+For example, imagine a banking application.
+- User A has ₹5,000.
+- User transfers ₹1,000 to User B.
+- User A should have ₹4,000.
+- User B should receive ₹1,000.
+If the money is deducted from User A but not credited to User B, the data becomes inconsistent.
+2. How does MongoDB maintain data consistency?
+
+1. Atomic operations
+MongoDB guarantees that a single-document write operation is atomic.
+ Either the entire operation on that document succeeds, or it does not partially apply.
+Example: updating a user's balance in one document.
+
+
+2. Transactions
+If an operation updates multiple documents, MongoDB supports multi-document transactions so 
+the changes can commit together or be rolled back.
+Example: deducting money from one account and crediting another.
+
+
+3. Read and write concerns
+These settings control the acknowledgment required for writes and the consistency guarantees for reads,
+ especially when MongoDB uses replica sets.
+Example: using writeConcern: { w: "majority" } to wait for acknowledgment from a majority of voting members.
+
+
+4. Schema validation
+MongoDB can enforce rules for document fields and data types to prevent invalid data from being inserted or updated.
+
+
+
+3. Interview question and answer
+Question: How do you maintain data consistency in MongoDB?
+A good interview answer:
+"In MongoDB, we maintain data consistency using atomic operations, transactions, read and write concerns, 
+and schema validation. Single-document operations are atomic by default. For operations involving multiple documents, 
+we can use transactions to ensure that all changes are committed together or rolled back if something fails. 
+We can also use schema validation to prevent invalid data."
+
+------------------------------------------------------------------------
+
+ 😅: What is the difference between a unique index and schema validation in MongoDB?What is 
+the difference between schema validation and write concern in MongoDB?
+ 😅: In a production MERN application, I secure MongoDB using authentication and
+ role-based access control, strong credentials, environment variables, and network access restrictions.
+  I validate user input on the backend to prevent injection attacks, use TLS for secure connections, 
+  enable encryption and backups, and follow the principle of least privilege. I also avoid exposing database
+   credentials in frontend code or version control."
+ 😅: Interview question: You accidentally upload your MongoDB connection string to a public 
+GitHub repository. What should you do first?Rotate or revoke the exposed credentials immediately, then remove 
+the secret and investigate access
+ 😅: Event loop latency is the delay between the time a task is ready to be processed and 
+the time the event loop actually gets to execute it. In Node.js, latency can increase when the main thread is blocked 
+by long-running synchronous code. We can reduce it by avoiding blocking operations, using asynchronous APIs, and moving 
+CPU-intensive tasks to worker threads when appropriate.
+
+-------------------------------------------------------------------
+
+We prefer functional components over class components in modern React because they 
+require less boilerplate code, are easier to read and maintain, and support Hooks such as 
+`useState` and `useEffect`. Hooks also allow us to reuse stateful logic through custom Hooks. 
+Class components use lifecycle methods and `this.state`, whereas functional components use Hooks 
+to manage state and side effects. Both are supported by React,
+ but functional components are recommended for new development.
+ --------------------------------------------------------------------
+
+
+ 2. Class lifecycle vs functional component
+Class component	       Functional component
+componentDidMount()	    Often useEffect(..., [])
+componentDidUpdate()	Often useEffect() with dependencies
+componentWillUnmount()	Cleanup returned by useEffect()                                                                                                                                               React manages the lifecycle of functional components. We use Hooks such as useEffect to handle side effects during the component's lifetime. The effect runs after the UI is committed, and its cleanup function
+ handles tasks such as clearing timers or removing event listeners.
+
+ 

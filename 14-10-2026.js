@@ -202,7 +202,7 @@ console.log(num*2);// Output: 4  (Multiplication: 2 * 2)
 
 console.log(num ** 2); // Output: 4  (Exponentiation: 2 to the power of 2)
 
-console.log(2 ** 3 ** 2);  //512            \[3^2 = 3 \times 3 = 9\]   \[2^9 = 2\times2\times2\times2\times2\times2\times2\times2\times2\]
+console.log(2 ** 3 ** 2);  //512            \[3^2 = 3 \times 3 = 9\]   \[ 2^9 = 2\times2\times2\times2\times2\times2\times2\times2\times2\]
 
 // JavaScript creates it as a global 
 // variable behind the scenes. This is generally considered a bad practice.
