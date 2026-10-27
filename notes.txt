@@ -141,4 +141,23 @@ componentDidUpdate()	Often useEffect() with dependencies
 componentWillUnmount()	Cleanup returned by useEffect()                                                                                                                                               React manages the lifecycle of functional components. We use Hooks such as useEffect to handle side effects during the component's lifetime. The effect runs after the UI is committed, and its cleanup function
  handles tasks such as clearing timers or removing event listeners.
 
+ -----------------------------------------------------------------------
+
+
+ 1. To Listen on All Network Interfaces At Once
+
+If a computer has multiple network connections (like Wi-Fi, an Ethernet cable, and a VPN), each one has its own distinct IP address.
+• Without 0.0.0.0: A programmer would have to write complex code to detect every single network card and bind their server software to each IP address individually.
+• With 0.0.0.0: The programmer can simply bind the software to 0.0.0.0. The operating system then automatically routes incoming traffic from all active network interfaces to that software.
+
+2. To Direct Unknown Internet Traffic (Default Route)
+
+Routers cannot hold a map of every single website and server on Earth;
+ it would take up too much memory.
+• Instead, routers use 0.0.0.0/0 as a catch-all destination.
+• If a router receives data for an address it doesn't recognize, it checks
+ this rule and essentially says, "I don't know where this goes, so send it to the 
+ default 
+gateway (the main internet line) via 0.0.0.0."
+
  

@@ -224,3 +224,5 @@ console.log(aa.filter((x)=>x>5));  //[ 56, 7 ]
 //  the element's box model. The outline property draws a line outside the element's border and does not 
 //  take up space or affect the layout. A border can be applied
 //  to individual sides, while an outline is drawn around the element as a whole.
+
+//-------------------------------------------------------------

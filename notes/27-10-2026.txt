@@ -1,0 +1,77 @@
+JavaScript is a dynamically typed programming language, which means we don't need to explicitly declare the type of a variable,
+ and its type can change at runtime.
+
+TypeScript is a superset of JavaScript that adds static type checking. We can define types explicitly or let TypeScript 
+infer them automatically. It helps us catch many type-related errors during development, before running the application.
+
+For example, in JavaScript, we can assign a string to a variable that previously held a number. In TypeScript, if
+ that variable is inferred or declared as a number, assigning a string will cause a type-checking error.
+
+TypeScript code is typically compiled into JavaScript before execution.
+
+
+
+
+An enum, or enumeration, is a TypeScript feature used to define a set of named constants. It improves code readability and 
+consistency by allowing us to use predefined values instead of repeatedly writing literal values. For example, in an HRMS 
+application, we can define an enum for user roles such as Admin, HR, and Employee.
+
+
+
+3. With Generics
+function getValue<T>(value: T): T {
+    return value;
+}
+
+console.log(getValue<number>(10));
+console.log(getValue<string>("Akila"));
+console.log(getValue<boolean>(true));
+
+
+
+3. Type inference in functions
+TypeScript can infer the return type of a function, too.
+function add(a: number, b: number) {
+    return a + b;
+}
+
+
+
+
+An interface defines the structure of an object — which properties it should have and what types those properties 
+should contain.
+
+Imagine you're building an HRMS application. Every employee has a name, age, and email address. An interface describes
+ that expected structure.
+interface Employee {
+    name: string;
+    age: number;
+    email: string;
+}
+
+const employee: Employee = {
+    name: "Akila",
+    age: 25,}
+
+
+
+
+    What are modern JavaScript features?", you can say:
+Modern JavaScript features are improvements introduced in newer ECMAScript versions that make code more readable,
+ maintainable, and efficient. Some important examples are let and const, arrow functions, template literals, destructuring, 
+ spread and rest operators, ES modules, Promises, async/await, optional chaining, and nullish coalescing. In my React and 
+ Node.js development, I commonly use destructuring, array methods, async/await, and optional chaining.
+
+
+
+------------------------------------------------------------------------
+
+
+"Synchronous JavaScript executes statements one after another, where each operation must finish before 
+the next one proceeds. Asynchronous JavaScript allows operations such as API calls and timers to complete later 
+without blocking the rest of the program. We commonly handle asynchronous operations using callbacks, Promises, 
+and async/await."
+
+Important interview point: JavaScript normally executes your code on a single main thread. Asynchronous operations 
+don't necessarily mean JavaScript runs multiple lines simultaneously; the runtime coordinates waiting and schedules 
+callbacks to execute later.
